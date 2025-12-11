@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --dark-background: #07080d;
+  --light-foreground: #f2f2f2;
+
+  --primary: #e2950d;
+  --gray: #999999;
+  --neutral: #1E242A;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--dark-background);
+    --foreground: var(--light-foreground);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+
+  --color-gray: var(--gray);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+@layer components {
+  .neon-text {
+    color: var(--primary);
+    text-shadow: 0 0 4px var(--primary);
+  }
+
+  .markdown-code {
+    padding: 2px 4px;
+    margin: 0;
+    font-size: 85%;
+    white-space: break-spaces;
+    background-color: var(--neutral);
+    color: #d7d6d6 !important;
+    border-radius: 6px;
+  }
+}
