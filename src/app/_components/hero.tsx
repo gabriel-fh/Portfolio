@@ -1,3 +1,6 @@
+import { Button } from "./button";
+import { Icon } from "@iconify/react";
+
 function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -8,12 +11,35 @@ function Hero() {
           <h1 className="text-5xl md:text-7xl font-bold">
             <span>Gabriel</span>
             <br />
-            <span className="neon-text glow-pulse">Hermenegildo</span>
+            <span className="text-primary glow-pulse">Hermenegildo</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray">
-            Desenvolvedor Front-End <span className="text-primary">*</span>
+          <p className="text-xl md:text-2xl text-light-gray">
+            Desenvolvedor Front-End <span className="text-primary-neon/50">*</span>
           </p>
-          <p className="text-lg text-gray leading-relaxed">Criando bugs desde o primeiro <span className="markdown-code">Hello World</span> em C</p>
+          <p className="text-lg text-gray leading-relaxed">
+            Criando bugs desde o primeiro <span className="markdown-code">Hello World</span> em C
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <Button size="lg">
+            <Icon icon="iconoir:terminal" className="mr-2 h-5 w-5 icon-neon" />
+            Abrir Terminal
+          </Button>
+
+          <Button
+            variant="outline"
+            size="lg"
+            asChild
+          >
+            <a href="https://github.com/gabriel-fh" target="_blank" rel="noopener noreferrer">
+              <Icon
+                icon="mdi:github"
+                className="mr-2 h-6 w-6"
+              />{" "}
+              GitHub
+            </a>
+          </Button>
         </div>
       </div>
     </section>

@@ -2,30 +2,44 @@
 @import "tailwindcss";
 
 :root {
-  --dark-background: #07080d;
-  --light-foreground: #f2f2f2;
+  --dark-background: 7 8 13;
+  --light-foreground: 242 242 242;
 
-  --primary: #e2950d;
-  --gray: #999999;
-  --neutral: #1E242A;
+  --primary: 68, 130, 130;
+  --primary-neon: 0, 191, 166;
+  --gray: 153 153 153;
+  --light-gray: 215 214 214;
+  --neutral: 30 36 42;
+  --dark-gray: 18 18 22;
+
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --shadow: 0 4px 20px rgb(var(--primary) / 0.2);
+
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--dark-background);
-    --foreground: var(--light-foreground);
+    --background: rgb(var(--dark-background));
+    --foreground: rgb(var(--light-foreground));
   }
 }
 
 @media (prefers-color-scheme: light) {
+  /* Você pode definir cores claras aqui se quiser */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
 
-  --color-gray: var(--gray);
+  --color-primary: rgb(var(--primary));
+  --color-primary-neon: rgb(var(--primary-neon));
+  --color-gray: rgb(var(--gray));
+  --color-light-gray: rgb(var(--light-gray));
+  --color-neutral: rgb(var(--neutral));
+  --color-dark-gray: rgb(var(--dark-gray));
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -38,18 +52,39 @@ body {
 }
 
 @layer components {
-  .neon-text {
-    color: var(--primary);
-    text-shadow: 0 0 4px var(--primary);
-  }
-
   .markdown-code {
     padding: 2px 4px;
     margin: 0;
     font-size: 85%;
     white-space: break-spaces;
-    background-color: var(--neutral);
-    color: #d7d6d6 !important;
+    background-color: rgb(var(--neutral));
+    color: rgb(var(--light-gray)) !important;
     border-radius: 6px;
+  }
+}
+
+@layer utilities {
+  .neon-text,
+  .hover\:neon-text:hover {
+    color: rgb(var(--primary-neon));
+    text-shadow: 0 0 4px rgb(var(--primary-neon));
+  }
+
+  .soft-neon-text,
+  .hover\:soft-neon-text:hover {
+    color: rgb(var(--primary-neon));
+    text-shadow: 0 0 2px rgb(var(--primary-neon));
+  }
+  .neon-border,
+  .hover\:neon-border:hover {
+    transition: var(--transition);
+    border: 1px solid rgba(var(--primary-neon), 0.35);
+    box-shadow: 0 0 6px rgba(var(--primary-neon), 0.3),
+      /* glow externo suave */ inset 0 0 6px rgba(var(--primary-neon), 0.18); /* brilho interno bem discreto */
+  }
+
+  .icon-neon {
+    color: rgb(var(--primary-neon));
+    filter: drop-shadow(0 0 2px rgb(var(--primary-neon)));
   }
 }
